@@ -1,0 +1,45 @@
+# GFBT Dispatch - Listmonk (replaces Mailchimp)
+# Deploys the official listmonk image on Render with a dedicated Render Postgres.
+# Config is driven entirely by LISTMONK_ env vars, which override the image's config.toml.
+databases:
+  - name: gfbt-dispatch-db
+    databaseName: listmonk
+    user: listmonk
+    plan: free
+    region: oregon
+
+services:
+  - type: web
+    name: gfbt-dispatch
+    runtime: image
+    image:
+      url: docker.io/listmonk/listmonk:latest
+    plan: starter
+    region: oregon
+    healthCheckPath: /api/health
+    dockerCommand: sh -c "./listmonk --install --idempotent --yes && ./listmonk"
+    envVars:
+      - key: LISTMONK_app__address
+        value: "0.0.0.0:9000"
+      - key: LISTMONK_db__host
+        fromDatabase:
+          name: gfbt-dispatch-db
+          property: host
+      - key: LISTMONK_db__port
+        fromDatabase:
+          name: gfbt-dispatch-db
+          property: port
+      - key: LISTMONK_db__user
+        fromDatabase:
+          name: gfbt-dispatch-db
+          property: user
+      - key: LISTMONK_db__password
+        fromDatabase:
+          name: gfbt-dispatch-db
+          property: password
+      - key: LISTMONK_db__database
+        fromDatabase:
+          name: gfbt-dispatch-db
+          property: database
+      - key: LISTMONK_db__ssl_mode
+        value: require
