@@ -16,6 +16,12 @@
 	<link href="/public/custom.css?v={{ .AssetVersion }}" rel="stylesheet" type="text/css">
 	<script src="/public/custom.js?v={{ .AssetVersion }}" async defer></script>
 
+	{{/* GFBT brand. Fonts then the skin, loaded last so GFBT wins the cascade. */}}
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+	<link href="/public/static/gfbt-brand.css?v={{ .AssetVersion }}" rel="stylesheet" type="text/css" />
+
 	{{ if ne .FaviconURL "" }}
 		<link rel="icon" href="{{ .FaviconURL }}" type="image/x-icon" />
 	{{ else }}
@@ -23,15 +29,31 @@
 	{{ end }}
 </head>
 <body>
+	{{/* GFBT demo chrome. Sticky terminal banner mirroring the fleet DemoChrome. */}}
+	<div class="gfbt-chrome" role="region" aria-label="GFBT demo banner">
+		<div class="gfbt-chrome__inner">
+			<a class="gfbt-chrome__brand" href="https://goodfriendsbadtimes.com" aria-label="Good Friends Bad Times fleet hub">
+				<span class="gfbt-chrome__dot" aria-hidden="true"></span>
+				<span class="gfbt-chrome__wordmark">GFBT</span>
+				<span class="gfbt-chrome__divider" aria-hidden="true">/</span>
+				<span class="gfbt-chrome__app">Dispatch</span>
+			</a>
+			<div class="gfbt-chrome__ticker">
+				<span class="gfbt-chrome__key">DEMO</span>
+				<span class="gfbt-chrome__sep" aria-hidden="true">|</span>
+				<span class="gfbt-chrome__val">Replaces <strong>Mailchimp</strong></span>
+			</div>
+			<a class="gfbt-chrome__cta" href="https://goodfriendsbadtimes.com">Book a build call &rarr;</a>
+		</div>
+		<span class="gfbt-chrome__rule" aria-hidden="true"></span>
+	</div>
+
     <div class="container wrap">
 		<header class="header">
 			<div class="logo">
-				<a href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
-				{{ if ne .LogoURL "" }}
-					<img src="{{ .LogoURL }}" alt="{{ .Data.Title }}" />
-				{{ else }}
-					<img src="/public/static/logo.svg?v={{ .AssetVersion }}" alt="{{ .Data.Title }}" />
-				{{ end }}
+				<a class="gfbt-wordmark" href="{{ if .EnablePublicSubPage }}{{ .RootURL}}/subscription/form{{ end }}">
+					<span class="gfbt-wordmark__mark">GFBT</span>
+					<span class="gfbt-wordmark__app">Dispatch</span>
 				</a>
 			</div>
 		</header>

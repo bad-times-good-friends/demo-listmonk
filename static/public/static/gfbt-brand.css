@@ -1,0 +1,360 @@
+/* ==========================================================================
+   GFBT brand skin for the listmonk public site. Demo name: Dispatch.
+   Ported from the Ghost mirror at packages/brand/ghost/gfbt-ghost-vars.css.
+   Loaded after listmonk style.css and custom.css so GFBT wins the cascade.
+   Bloomberg-meets-editorial: dark #0a0a0a canvas, one warm red accent,
+   Inter for text, IBM Plex Mono for data and labels.
+   ========================================================================== */
+
+:root {
+  --gfbt-ink-950: #0a0a0a;
+  --gfbt-ink-900: #121212;
+  --gfbt-ink-850: #181818;
+  --gfbt-ink-800: #1f1f1f;
+  --gfbt-ink-700: #2a2a2a;
+  --gfbt-ink-600: #3a3a3a;
+  --gfbt-ink-400: #707070;
+  --gfbt-ink-300: #919191;
+  --gfbt-ink-200: #b4b4b4;
+  --gfbt-ink-100: #e6e6e6;
+  --gfbt-ink-50:  #f4f4f4;
+  --gfbt-ink-0:   #ffffff;
+
+  /* Accent from the apex brand. Warm red CTA. */
+  --gfbt-accent-600: #b91c1c;
+  --gfbt-accent-500: #dc2626;
+  --gfbt-accent-400: #ef4444;
+  --gfbt-accent-rgb: 220 38 38;
+
+  /* Type families from the apex brand. Loaded via Google Fonts in the head. */
+  --gfbt-font-display: "Inter", system-ui, Arial, sans-serif;
+  --gfbt-font-sans: "Inter", system-ui, Arial, sans-serif;
+  --gfbt-font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --gfbt-bg: var(--gfbt-ink-950);
+  --gfbt-surface: var(--gfbt-ink-900);
+  --gfbt-surface-raised: var(--gfbt-ink-850);
+  --gfbt-border: var(--gfbt-ink-700);
+  --gfbt-text: var(--gfbt-ink-100);
+  --gfbt-text-strong: var(--gfbt-ink-0);
+  --gfbt-text-muted: var(--gfbt-ink-300);
+  --gfbt-text-faint: var(--gfbt-ink-400);
+  --gfbt-accent: var(--gfbt-accent-500);
+  --gfbt-accent-foreground: var(--gfbt-ink-0);
+
+  /* Status roles. */
+  --gfbt-success: #3fb950;
+  --gfbt-warning: #d29922;
+  --gfbt-danger:  #f85149;
+  --gfbt-info:    #58a6ff;
+
+  --gfbt-tracking-label: 0.12em;
+  --gfbt-tracking-wide: 0.04em;
+  --gfbt-radius-xs: 2px;
+  --gfbt-radius-sm: 3px;
+  --gfbt-chrome-height: 40px;
+  --gfbt-container-max: 1200px;
+
+  --gfbt-chrome-bg: var(--gfbt-ink-950);
+  --gfbt-chrome-text: var(--gfbt-ink-200);
+  --gfbt-chrome-accent: var(--gfbt-accent-500);
+}
+
+/* Canvas. */
+html,
+body {
+  background: var(--gfbt-bg);
+}
+body {
+  font-family: var(--gfbt-font-sans);
+  color: var(--gfbt-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Links. Accent by default, brighter on hover. */
+a {
+  color: var(--gfbt-accent-400);
+  text-decoration-color: rgb(var(--gfbt-accent-rgb) / 0.4);
+  text-underline-offset: 2px;
+}
+a:hover {
+  color: var(--gfbt-accent-500);
+  text-decoration-color: var(--gfbt-accent-500);
+}
+
+/* Typography. */
+h1, h2, h3, h4 {
+  font-family: var(--gfbt-font-display);
+  color: var(--gfbt-text-strong);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 1.05rem;
+}
+label {
+  color: var(--gfbt-text-muted);
+  font-family: var(--gfbt-font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: var(--gfbt-tracking-wide);
+}
+
+/* Card shell. The centered listmonk container becomes a dark panel. */
+.container {
+  color: var(--gfbt-text);
+}
+.wrap {
+  background: var(--gfbt-surface);
+  border: 1px solid var(--gfbt-border);
+  border-radius: var(--gfbt-radius-sm);
+  box-shadow: none;
+}
+
+/* Page header inside the card. Holds the GFBT wordmark. */
+.header {
+  border-bottom: 1px solid var(--gfbt-border);
+}
+.header .logo img {
+  filter: none;
+}
+
+/* GFBT wordmark treatment replacing the stock listmonk logo. */
+.gfbt-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  line-height: 1;
+}
+.gfbt-wordmark:hover {
+  text-decoration: none;
+}
+.gfbt-wordmark__mark {
+  font-family: var(--gfbt-font-mono);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: var(--gfbt-tracking-label);
+  color: var(--gfbt-text-strong);
+}
+.gfbt-wordmark__app {
+  font-family: var(--gfbt-font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--gfbt-accent-500);
+}
+
+/* Form controls. Dark fields, hairline borders, tight radii. */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+  background: var(--gfbt-ink-950);
+  border: 1px solid var(--gfbt-border);
+  border-radius: var(--gfbt-radius-xs);
+  box-shadow: none;
+  color: var(--gfbt-text);
+  font-family: var(--gfbt-font-sans);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--gfbt-text-faint);
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gfbt-accent-500);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(var(--gfbt-accent-rgb) / 0.2);
+}
+
+/* Checkboxes and radios take the accent. */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--gfbt-accent-500);
+}
+
+/* Buttons. Solid warm red primary, outline secondary. */
+.button {
+  background: var(--gfbt-accent-500);
+  color: var(--gfbt-accent-foreground);
+  border: 1px solid var(--gfbt-accent-500);
+  border-radius: var(--gfbt-radius-xs);
+  font-family: var(--gfbt-font-mono);
+  font-weight: 600;
+  letter-spacing: var(--gfbt-tracking-wide);
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+}
+.button:hover {
+  background: var(--gfbt-accent-400);
+  border-color: var(--gfbt-accent-400);
+  color: var(--gfbt-accent-foreground);
+}
+.button:active {
+  background: var(--gfbt-accent-600);
+  border-color: var(--gfbt-accent-600);
+}
+.button.button-outline {
+  background: transparent;
+  border: 1px solid var(--gfbt-border);
+  color: var(--gfbt-text);
+}
+.button.button-outline:hover {
+  border-color: var(--gfbt-accent-500);
+  background: transparent;
+  color: var(--gfbt-accent-500);
+}
+
+/* List cards on the subscribe and manage forms. */
+.lists .description {
+  color: var(--gfbt-text-muted);
+}
+
+/* Archive index. */
+.archive .date {
+  color: var(--gfbt-text-faint);
+  font-family: var(--gfbt-font-mono);
+  letter-spacing: var(--gfbt-tracking-wide);
+}
+
+/* Pagination. */
+.pg-page {
+  color: var(--gfbt-text-muted);
+}
+.pg-page.pg-selected {
+  color: var(--gfbt-text-strong);
+}
+
+/* Section dividers used across unsubscribe and manage flows. */
+.unsub-all {
+  border-top: 1px solid var(--gfbt-border);
+}
+
+/* Status text. */
+.error {
+  color: var(--gfbt-danger);
+}
+.small {
+  color: var(--gfbt-text-muted);
+}
+
+/* Footer. */
+footer.container {
+  color: var(--gfbt-text-faint);
+}
+footer a {
+  color: var(--gfbt-text-muted);
+}
+footer a:hover {
+  color: var(--gfbt-accent-500);
+}
+
+/* ==========================================================================
+   Demo chrome. Sticky 40px terminal banner. Mirrors the React DemoChrome and
+   the Ghost .gfbt-chrome. It reserves its own height in normal flow, so the
+   page body needs no extra offset and the banner never overlaps app chrome.
+   ========================================================================== */
+.gfbt-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: var(--gfbt-chrome-height);
+  background: var(--gfbt-chrome-bg);
+  color: var(--gfbt-chrome-text);
+  font-family: var(--gfbt-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--gfbt-tracking-wide);
+  user-select: none;
+}
+.gfbt-chrome__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+  max-width: var(--gfbt-container-max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.gfbt-chrome__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gfbt-text);
+  text-decoration: none;
+}
+.gfbt-chrome__brand:hover {
+  color: var(--gfbt-text);
+  text-decoration: none;
+}
+.gfbt-chrome__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--gfbt-chrome-accent);
+  box-shadow: 0 0 0 3px rgb(var(--gfbt-accent-rgb) / 0.18);
+}
+.gfbt-chrome__wordmark {
+  font-weight: 700;
+  letter-spacing: var(--gfbt-tracking-label);
+  color: var(--gfbt-text-strong);
+}
+.gfbt-chrome__divider { color: var(--gfbt-text-faint); }
+.gfbt-chrome__app { color: var(--gfbt-chrome-text); font-weight: 500; }
+.gfbt-chrome__ticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--gfbt-tracking-label);
+}
+.gfbt-chrome__key { color: var(--gfbt-chrome-accent); font-weight: 600; }
+.gfbt-chrome__sep { color: var(--gfbt-text-faint); }
+.gfbt-chrome__val { color: var(--gfbt-text-muted); }
+.gfbt-chrome__val strong { color: var(--gfbt-text); font-weight: 600; }
+.gfbt-chrome__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  height: calc(var(--gfbt-chrome-height) - 14px);
+  background: var(--gfbt-chrome-accent);
+  color: var(--gfbt-accent-foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--gfbt-tracking-wide);
+  text-decoration: none;
+  border-radius: var(--gfbt-radius-xs);
+  white-space: nowrap;
+}
+.gfbt-chrome__cta:hover {
+  background: var(--gfbt-accent-400);
+  color: var(--gfbt-accent-foreground);
+  text-decoration: none;
+}
+.gfbt-chrome__rule {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gfbt-chrome-accent) 50%, transparent);
+  opacity: 0.6;
+}
+
+/* The ticker crowds narrow screens. Drop it below the terminal width. */
+@media screen and (max-width: 650px) {
+  .gfbt-chrome__ticker { display: none; }
+}
