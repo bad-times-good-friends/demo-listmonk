@@ -16,7 +16,7 @@ services:
       url: docker.io/listmonk/listmonk:latest
     plan: starter
     region: oregon
-    healthCheckPath: /api/health
+    healthCheckPath: /health
     preDeployCommand: "/listmonk/listmonk --install --idempotent --yes"
     envVars:
       - key: LISTMONK_app__address
