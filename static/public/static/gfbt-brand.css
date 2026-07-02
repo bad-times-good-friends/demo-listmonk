@@ -254,3 +254,132 @@ footer a {
 footer a:hover {
   color: var(--gfbt-accent-500);
 }
+
+/* ==========================================================================
+   Login page: fleet-canonical split panel. Scoped to the login route via
+   :has(section.login) so the shared public shell (subscribe, archive,
+   unsubscribe) is untouched. Left column = wordmark + form on the dark
+   canvas; right column = the editorial brand panel.
+   ========================================================================== */
+body:has(section.login) .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "head panel"
+    "form panel";
+  align-content: center;
+  min-height: 100vh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--gfbt-bg);
+}
+body:has(section.login) .wrap .header {
+  grid-area: head;
+  align-self: end;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+  border-bottom: 0;
+}
+body:has(section.login) .wrap .login {
+  grid-area: form;
+  width: 100%;
+  max-width: 30rem;
+  margin: 1.5rem auto 0;
+  padding: 0 3rem 3rem;
+}
+body:has(section.login) > footer.container {
+  display: none;
+}
+
+.gfbt-auth-panel {
+  grid-area: panel;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 3.5rem 4rem;
+  border-left: 1px solid var(--gfbt-border);
+  background: var(--gfbt-bg);
+}
+.gfbt-auth-panel__rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gfbt-accent-500);
+}
+.gfbt-auth-panel__flame {
+  width: 64px;
+  height: 64px;
+}
+.gfbt-auth-panel__wordmark {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  line-height: 1;
+  color: var(--gfbt-ink-100);
+}
+.gfbt-auth-panel__mark {
+  font-family: var(--gfbt-font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.gfbt-auth-panel__app {
+  font-family: var(--gfbt-font-display);
+  font-weight: 500;
+  font-style: italic;
+}
+.gfbt-auth-panel__bar {
+  width: 96px;
+  height: 4px;
+  margin: 1.5rem 0;
+  background: var(--gfbt-accent-500);
+}
+.gfbt-auth-panel__replaces {
+  font-family: var(--gfbt-font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+}
+.gfbt-auth-panel__replaces .k {
+  color: var(--gfbt-accent-500);
+}
+.gfbt-auth-panel__replaces .v {
+  margin-left: 0.75rem;
+  color: var(--gfbt-ink-200);
+}
+.gfbt-auth-panel__foot {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  font-family: var(--gfbt-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--gfbt-ink-400);
+}
+.gfbt-auth-panel__foot .dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 0.75rem;
+  border-radius: 999px;
+  background: var(--gfbt-accent-500);
+}
+
+@media (max-width: 800px) {
+  body:has(section.login) .wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "form";
+    min-height: auto;
+    align-content: start;
+  }
+  .gfbt-auth-panel {
+    display: none;
+  }
+}
