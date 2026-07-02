@@ -41,5 +41,21 @@
 
 </section>
 
+{{/* GFBT editorial brand panel, mirrors the OG card and the rest of the fleet. */}}
+<aside class="gfbt-auth-panel" aria-hidden="true">
+	<div class="gfbt-auth-panel__rule"></div>
+	<img class="gfbt-auth-panel__flame" src="{{ .RootURL }}/public/static/gfbt-flame.png" alt="" width="64" height="64" />
+	<div class="gfbt-auth-panel__body">
+		<div class="gfbt-auth-panel__wordmark">
+			<span class="gfbt-auth-panel__mark">GFBT</span> <span class="gfbt-auth-panel__app">Dispatch</span>
+		</div>
+		<div class="gfbt-auth-panel__bar"></div>
+		<div class="gfbt-auth-panel__replaces">
+			<span class="k">REPLACES</span> <span class="v">MAILCHIMP</span>
+		</div>
+		<div class="gfbt-auth-panel__foot"><span class="dot"></span> goodfriendsbadtimes.com</div>
+	</div>
+</aside>
+
 {{ template "footer" .}}
 {{ end }}
